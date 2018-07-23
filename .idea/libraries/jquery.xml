@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="jquery" type="javaScript">
+    <properties>
+      <option name="frameworkName" value="jQuery" />
+      <option name="frameworkVersion" value="1.10" />
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/sendRequest.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/sendRequest.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
