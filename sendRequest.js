@@ -7,6 +7,9 @@ $(document).ready(function () {
                 content:$("#contentText").val()
             },function (data, status) {
                 console.log(data);
+                $("#nameText").val("");
+                $("#themeText").val("");
+                $("#contentText").val("");
             });
     });
 });
