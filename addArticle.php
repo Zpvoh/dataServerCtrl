@@ -15,7 +15,10 @@ if($db->connect_errno){
     echo "There is no such database.";
 }
 
-$query="insert into `articleNames` (`name`, `theme`) values ('{$_POST['name']}', '{$_POST['theme']}')";
+$query="insert into `articleNames` (`name`, `theme`, `content`) values 
+        ('{$_POST['name']}', '{$_POST['theme']}', '{$_POST['content']}')";
 $result=$db->query($query);
+
+
 
 $db->close();
