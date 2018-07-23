@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bulma.min.css"/>
+    <link rel="stylesheet" href="css/cover.css">
+    <link rel="icon" href="easyicon.ico">
+    <title>添加文章</title>
+</head>
+<body>
+
+<form id="article" name="article" action="addArticle.php" method="post">
+    <div>
+    名字：
+    <input type="text" name="name" class="has-text-centered">
+    </div>
+    <div>
+    主题风格：
+    <input type="text" name="theme" class="has-text-centered">
+    </div>
+    <div>
+    内容：
+    <textarea name="content" class="textarea"></textarea><br>
+    </div>
+    <input type="submit" class="button">
+</form>
+
+</body>
+</html>
