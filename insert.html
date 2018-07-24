@@ -3,29 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/bulma.min.css"/>
+    <link rel="stylesheet" href="Trumbowyg-master/dist/ui/trumbowyg.min.css">
     <link rel="stylesheet" href="css/cover.css">
     <link rel="icon" href="easyicon.ico">
     <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="Trumbowyg-master/dist/trumbowyg.min.js"></script>
+    <script src="Trumbowyg-master/dist/langs/zh_cn.min.js"></script>
     <script src="sendRequest.js"></script>
     <title>添加文章</title>
 </head>
 <body>
 
 <form id="article" name="article" action="" method="post">
-    <div>
-    名字：
+    <div class="textfield">
+    题目：
     <input type="text" name="name" class="has-text-centered" id="nameText">
     </div>
-    <div>
+    <div class="textfield">
     主题风格：
     <input type="text" name="theme" class="has-text-centered" id="themeText">
     </div>
     <div>
-    内容：
-    <textarea name="content" class="textarea" id="contentText"></textarea><br>
-    </div>
-    <input type="button" class="button is-info" id="submit" value="提交">
 </form>
+
+<div id="form">
+    <div id="editor">
+        <p>hello</p>
+    </div>
+</div>
+
+<input type="button" class="button is-info" id="submit" value="提交">
+
+<div id="reflect">
+
+</div>
+
+<script>
+    $('#editor').trumbowyg({
+        btns: [
+            ['viewHTML'],
+            ['undo', 'redo'], // Only supported in Blink browsers
+            ['formatting'],
+            ['strong', 'em'],
+            ['superscript', 'subscript'],
+            ['link'],
+            ['insertImage'],
+            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+            ['unorderedList', 'orderedList'],
+            ['horizontalRule'],
+            ['removeformat'],
+            ['fullscreen']
+        ]
+    });
+
+</script>
 
 </body>
 </html>
