@@ -9,8 +9,7 @@ $(document).ready(function () {
                 console.log(data);
                 $("#nameText").val("");
                 $("#themeText").val("");
-                $("#contentText").val("");
-                document.getElementById("reflect").innerHTML=document.getElementById("editor").innerHTML
+                document.getElementById("editor").innerHTML="";
             });
     });
 });
