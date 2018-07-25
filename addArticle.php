@@ -29,7 +29,9 @@ $query="insert into `articleNames` (`name`, `theme`, `content`) values
         ('{$name_decode}', '{$_POST['theme']}', '{$_POST['content']}')";
 $result=$db->query($query);
 
-echo urlencode($_POST['name']);
-echo $result.'\n';
+exec("gpio mode 27 out");
+exec("gpio write 27 1");
+exec("gpio write 27 0");
+echo $_POST['name'];
 
 $db->close();
