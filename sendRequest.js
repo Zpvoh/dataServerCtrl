@@ -13,7 +13,7 @@ $(document).ready(function () {
                 $("#themeText").val("");
                 $("#passwordText").val("");
                 $('#keyText').val("");
-                document.getElementById("editor").innerHTML="";
+                document.getElementById("editor").innerHTML="<p></p>";
             });
     });
 });
