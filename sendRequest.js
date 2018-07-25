@@ -4,11 +4,15 @@ $(document).ready(function () {
             {
                 name:$("#nameText").val(),
                 theme:$("#themeText").val(),
-                content:document.getElementById("editor").innerHTML
-            },function (data, status) {
+                content:document.getElementById("editor").innerHTML,
+                password:$('#passwordText').val(),
+                key:$("#keyText").val()
+            }, function(data, status) {
                 console.log(data);
                 $("#nameText").val("");
                 $("#themeText").val("");
+                $("#passwordText").val("");
+                $('#keyText').val("");
                 document.getElementById("editor").innerHTML="";
             });
     });

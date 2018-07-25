@@ -18,12 +18,15 @@
     <div class="textfield">
     题目：
     <input type="text" name="name" class="has-text-centered" id="nameText">
-    </div>
-    <div class="textfield">
-    主题风格：
+        &nbsp;主题风格：
     <input type="text" name="theme" class="has-text-centered" id="themeText">
     </div>
-    <div>
+    <div class="textfield">
+        Password：
+        <input type="password" name="password" class="has-text-centered" id="passwordText">
+        &nbsp;Key：
+        <input type="password" name="key" class="has-text-centered" id="keyText">
+    </div>
 </form>
 
 <div id="form">
@@ -33,10 +36,6 @@
 </div>
 
 <input type="button" class="button is-info" id="submit" value="提交">
-
-<div id="reflect">
-
-</div>
 
 <script>
     $('#editor').trumbowyg({
