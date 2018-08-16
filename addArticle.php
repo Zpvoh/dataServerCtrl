@@ -25,13 +25,13 @@ if($db->connect_errno){
 
 $name_decode=$_POST['name'];
 
-$query="insert into `articleNames` (`name`, `theme`, `content`) values 
+$query="insert into `articles` (`title`, `theme`, `content`) values 
         ('{$name_decode}', '{$_POST['theme']}', '{$_POST['content']}')";
 $result=$db->query($query);
 
-exec("gpio mode 27 out");
+/*exec("gpio mode 27 out");
 exec("gpio write 27 1");
-exec("gpio write 27 0");
+exec("gpio write 27 0");*/
 echo $_POST['name'];
 
 $db->close();
