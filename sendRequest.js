@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    $("#input-id").fileinput({'showUpload':false, 'previewFileType':'any'});
+
     $("#submit").click(function () {
         $.post("addArticle.php",
             {
