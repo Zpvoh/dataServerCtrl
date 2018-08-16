@@ -142,7 +142,8 @@ class ArticlePage extends React.Component{
             for(var i=0; i<json.length; i++) {
                 var a=(<div class="card col-sm-3">
                     <h3 class="section">{json[i]['title']}</h3>
-                    <div class="section" dangerouslySetInnerHTML={{__html: json[i]['content']}}></div>
+                    <img src={json[i]['cover_img']}></img>
+                    <div class="section" dangerouslySetInnerHTML={{__html: json[i]['description']}}></div>
                 </div>);
                 this.state.articleArray.push(a);
             }
