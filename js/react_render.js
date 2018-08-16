@@ -1,6 +1,70 @@
 var password="";
 var key="";
 
+function setCookie(c_name,value,expiredays)
+{
+    var exdate=new Date()
+    exdate.setDate(exdate.getDate()+expiredays)
+    document.cookie=c_name+ "=" +escape(value)+
+        ((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+}
+
+function getCookie(c_name)
+{
+    if (document.cookie.length>0)
+    {
+        var c_start=document.cookie.indexOf(c_name + "=")
+        if (c_start!=-1)
+        {
+            c_start=c_start + c_name.length+1
+            var c_end=document.cookie.indexOf(";",c_start)
+            if (c_end==-1) c_end=document.cookie.length
+            return unescape(document.cookie.substring(c_start,c_end))
+        }
+    }
+    return ""
+}
+
+function delCookie(name)
+{
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval=getCookie(name);
+    if(cval!=null)
+        document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+}
+
+function login() {
+    password=getCookie("ps");
+    key=getCookie("key");
+
+    if(password=="" || key==""){
+        password=$('#psTxt').val();
+        key=$("#keyTxt").val();
+    }
+
+    $.post("fetchAllArticles.php", {
+        password:password,
+        key:key
+    },function (data, status) {
+        console.log(data);
+        setCookie("ps", password, 1);
+        setCookie("key", key, 1);
+
+        if(data.charAt(0)=='['){
+            var page=<ArticlePage/>;
+            elementArr.push(page);
+            ReactDOM.render(
+                elementArr,
+                document.getElementsByTagName("body")[0]
+            );
+        }else{
+            alert(data);
+        }
+
+    });
+}
+
 class Article extends React.Component{
     componentWillMount() {
         console.log('Component WILL MOUNT!')
@@ -69,7 +133,7 @@ class ArticlePage extends React.Component{
         console.log('Component WILL MOUNT!')
     }
     componentDidMount() {
-        $.post("../fetchAllArticles.php", {
+        $.post("fetchAllArticles.php", {
             password:password,
             key:key
         }, function (data, status) {
@@ -130,27 +194,7 @@ ReactDOM.render(
     document.getElementsByTagName("body")[0]
 );
 
-$("#loginBt").click(function () {
-    password=$('#psTxt').val();
-    key=$("#keyTxt").val();
+login();
 
-    $.post("fetchAllArticles.php", {
-        password:password,
-        key:key
-    },function (data, status) {
-        console.log(data);
-
-        if(data.charAt(0)=='['){
-            var page=<ArticlePage/>;
-            elementArr.push(page);
-            ReactDOM.render(
-                elementArr,
-                document.getElementsByTagName("body")[0]
-            );
-        }else{
-            alert(data);
-        }
-
-    });
-});
+$("#loginBt").click(login);
 
