@@ -1,37 +1,16 @@
 var password="";
 var key="";
+var logo=<span class="logo button" id="homePage">Gloomy</span>;
+var article=<span class="button" id="articleEntrance">articles</span>;
+var music=<span class="button">musics</span>;
+var movie=<span class="button">movies</span>;
 
-function login() {
-    password=getCookie("ps");
-    key=getCookie("key");
+var headArr=[logo, article, music, movie];
+var head=<header class="sticky">{headArr}</header>;
+var pageDiv=<div></div>;
+var foot=<footer class="sticky">2018-2020</footer>;
 
-    if(password=="" || key==""){
-        password=$('#psTxt').val();
-        key=$("#keyTxt").val();
-    }
-
-    $.post("fetchAllArticles.php", {
-        password:password,
-        key:key
-    },function (data, status) {
-        console.log(data);
-        setCookie("ps", password, 1);
-        setCookie("key", key, 1);
-
-        if(data.charAt(0)=='['){
-            var page=<ArticlePage/>;
-            elementArr.push(page);
-            elementArr.push(foot);
-            ReactDOM.render(
-                elementArr,
-                document.getElementsByTagName("body")[0]
-            );
-        }else{
-            alert(data);
-        }
-
-    });
-}
+var elementArr=[head, pageDiv, foot];
 
 function dele(e) {
     var deleId=e.target.name;
@@ -125,10 +104,10 @@ class ArticlePage extends React.Component{
                 var path="modify.php?id="+json[i]['id'];
                 var deleId="deleteBt"+json[i]['id'];
                 var artId="art"+json[i]['id'];
-                var a=(<div class="card col-sm-3" id={artId}>
-                    <h3 class="section"><a href={path}>{json[i]['title']}</a>
+                var a=(<div class="card col-sm-6" id={artId}>
+                    <h2 class="section"><a href={path}>{json[i]['title']}</a>
                         <img src="trash.svg" id={deleId} onClick={dele} class="deteleBt" name={json[i]['id']}/>
-                    </h3>
+                    </h2>
                     <img src={json[i]['cover_img']}/>
                     <div class="section" dangerouslySetInnerHTML={{__html: json[i]['description']}}/>
                 </div>);
@@ -164,21 +143,67 @@ class ArticlePage extends React.Component{
     }
 }
 
-var logo=<span class="logo">Gloomy</span>;
-var article=<span class="button" id="articleEntrance">articles</span>;
-var music=<span class="button">musics</span>;
-var movie=<span class="button">movies</span>;
+function homeRender() {
+    var page=<h1>Welcome to the Gloomy</h1>;
+    ReactDOM.render(
+        page,
+        document.getElementById("page")
+    );
+}
 
-var headArr=[logo, article, music, movie];
-var head=<header class="sticky">{headArr}</header>;
-var dialog=<VerifyDialog/>
-var foot=<footer class="sticky">2018-2020</footer>;
+function articleRender() {
+    var page=<ArticlePage/>;
+    ReactDOM.render(
+        page,
+        document.getElementById("page")
+    );
+}
 
-var elementArr=[head];
+function login() {
+    password=getCookie("ps");
+    key=getCookie("key");
+
+    if(password=="" || key==""){
+        password=$('#psTxt').val();
+        key=$("#keyTxt").val();
+    }
+
+    $.post("fetchAllArticles.php", {
+        password:password,
+        key:key
+    },function (data, status) {
+        $("#dialog").hide();
+        console.log(data);
+        setCookie("ps", password, 1);
+        setCookie("key", key, 1);
+
+        if(data.charAt(0)=='['){
+            ReactDOM.render(
+                headArr,
+                document.getElementById("head")
+            );
+
+            homeRender();
+
+            ReactDOM.render(
+                foot,
+                document.getElementById("foot")
+            );
+
+            $("#homePage").click(homeRender);
+            $("#articleEntrance").click(articleRender);
+        }else{
+            alert(data);
+        }
+
+    });
+}
+
+var dialog=<VerifyDialog/>;
 
 ReactDOM.render(
     dialog,
-    document.getElementsByTagName("body")[0]
+    document.getElementById("dialog")
 );
 
 login();
