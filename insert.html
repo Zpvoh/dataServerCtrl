@@ -42,26 +42,40 @@
 </head>
 <body>
 
-<div id="article" name="article" action="" method="post">
-    <div class="textfield">
-    题目：
-    <input type="text" name="name" class="col-sm-2" id="nameText">
-        &nbsp;主题风格：
-    <input type="text" name="theme" class="col-sm-2" id="themeText">
 
-        <input id="cover" name="cover" type="file" class="col-sm-2">
-    </div>
-    <div class="textfield">
 
-    </div>
-    <div>
-        描述：
-        <textarea class="col-sm-5" id="description"></textarea>
+<input type="checkbox" id="changeInfo" class="modal">
+<div>
+    <div class="card">
+        <label for="changeInfo" class="modal-close" ></label>
+
+        <div id="article" name="article" action="" method="post">
+            题目：
+            <input type="text" name="name" class="col-sm-10" id="nameText" value=""><br>
+            主题风格：
+            <input type="text" name="theme" class="col-sm-10" id="themeText" value="">
+            <div>
+                描述：
+                <textarea class="col-sm-10" id="description"></textarea>
+            </div>
+        </div>
+
     </div>
 </div>
 
-<div id="upload_cover">
+
+
+<input type="checkbox" id="changeCover" class="modal">
+<div>
+    <div class="card" id="changeCoverCard">
+        <label for="changeCover" class="modal-close" ></label>
+        <section id="coverSection"><input id="cover" name="cover" type="file" class="col-sm-10"></section>
+    </div>
 </div>
+
+<h1>
+    添加新文章
+</h1>
 
 <div id="form">
     <div id="editor">
@@ -69,13 +83,16 @@
     </div>
 </div>
 
-<input type="button" class="button is-info" id="submit" value="提交">
+<input type="button" class="button secondary col-sm-1" id="submit" value="提交">
+<label for="changeInfo" class="button primary col-sm-1">修改信息</label>
+<label for="changeCover" class="button primary col-sm-1">更改封面</label>
 
 <script>
     $('#editor').trumbowyg({
         lang:'zh-cn',
         btns: [
             ['undo', 'redo'], // Only supported in Blink browsers
+            ['viewHTML'],
             ['formatting'],
             ['strong', 'em'],
             ['superscript', 'subscript'],

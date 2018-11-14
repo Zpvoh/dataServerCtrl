@@ -1,9 +1,9 @@
 #form{
-    margin: 20px 10%;
+    margin: 50px 10%;
 }
 
 #article{
-    margin: 5em 10%;
+    margin: 1em 10%;
 }
 
 .file-input{
@@ -19,9 +19,28 @@
     margin-left: 10%;
 }
 
+#coverSection{
+    margin: 4em;
+}
+
+h1{
+    position: relative;
+    top:20px;
+    left: 10%;
+}
+
+#changeCoverCard{
+    min-width: 30em;
+    max-width: 30em;
+    width: 30em;
+    min-height: 30em;
+    max-height: 30em;
+    height: 30em;
+}
 
 
-textarea{
+
+/*textarea{
     padding: 10em 10%;
     min-width: 50px;
     max-width: 50px;
@@ -29,5 +48,5 @@ textarea{
     min-height: 20em;
     max-height: 20em;
     height: 20em;
-}
+}*/
 

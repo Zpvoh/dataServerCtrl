@@ -73,24 +73,40 @@ $article=$result->fetch_assoc();
 </head>
 <body name="<?php echo $id ?>" id="body">
 
-<div id="article" name="article" action="" method="post">
-    <div class="textfield">
-        题目：
-        <input type="text" name="name" class="col-sm-2" id="nameText" value="<?php echo $article['title']?>">
-        &nbsp;主题风格：
-        <input type="text" name="theme" class="col-sm-2" id="themeText" value="<?php echo $article['theme']?>">
+<input type="checkbox" id="changeInfo" class="modal">
+<div>
+    <div class="card">
+        <label for="changeInfo" class="modal-close" ></label>
 
-        <input id="cover" name="cover" type="file" class="col-sm-2">
-        <span name="<?php echo $article['cover_img']?>" id="cover_path"></span>
-    </div>
-    <div>
-        描述：
-        <textarea class="col-sm-5" id="description"><?php echo $article['description']?></textarea>
+        <div id="article" name="article" action="" method="post">
+                题目：
+                <input type="text" name="name" class="col-sm-10" id="nameText" value="<?php echo $article['title']?>"><br>
+                主题风格：
+                <input type="text" name="theme" class="col-sm-10" id="themeText" value="<?php echo $article['theme']?>">
+            <div>
+                描述：
+                <textarea class="col-sm-10" id="description"><?php echo $article['description']?></textarea>
+            </div>
+        </div>
+
     </div>
 </div>
 
-<div id="upload_cover">
+<input type="checkbox" id="changeCover" class="modal">
+<div>
+    <div class="card" id="changeCoverCard">
+        <label for="changeCover" class="modal-close" ></label>
+        <section id="coverSection"><input id="cover" name="cover" type="file" class="col-sm-10"></section>
+    </div>
 </div>
+
+<span name="<?php echo $article['cover_img']?>" id="cover_path"/>
+
+
+
+<h1>
+    <?php echo $article['title']?>
+</h1>
 
 <div id="form">
     <div id="editor">
@@ -98,13 +114,17 @@ $article=$result->fetch_assoc();
     </div>
 </div>
 
-<input type="button" class="button is-info" id="submit" value="提交">
+<input type="button" class="button secondary col-sm-1" id="submit" value="提交">
+<label for="changeInfo" class="button primary col-sm-1">修改信息</label>
+<label for="changeCover" class="button primary col-sm-1">更改封面</label>
+
 
 <script>
     $('#editor').trumbowyg({
         lang: 'zh-cn',
         btns: [
             ['undo', 'redo'], // Only supported in Blink browsers
+            ['viewHTML'],
             ['formatting'],
             ['strong', 'em'],
             ['superscript', 'subscript'],

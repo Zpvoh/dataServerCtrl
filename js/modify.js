@@ -34,6 +34,7 @@ function tick(){
 $(document).ready(function () {
     $("#cover").fileinput({
         'showUpload':true,
+        //'showPreview':false,
         'allowedFileTypes':'image',
         'allowedFileExtensions' : ['jpg', 'png','gif'],
         'previewFileType':'image',
