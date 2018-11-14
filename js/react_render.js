@@ -172,13 +172,12 @@ function login() {
         password:password,
         key:key
     },function (data, status) {
+        $("#dialog").hide();
         console.log(data);
         setCookie("ps", password, 1);
         setCookie("key", key, 1);
 
         if(data.charAt(0)=='['){
-            $("#dialog").hide();
-
             ReactDOM.render(
                 headArr,
                 document.getElementById("head")
