@@ -60,7 +60,7 @@ class Article extends React.Component{
 
 class VerifyDialog extends React.Component{
     render(){
-        return <div><label htmlFor="modal-control">Verify your identity</label>
+        return <div><label htmlFor="modal-control" className={"button"}>Verify your identity</label>
             <input type="checkbox" id="modal-control" className="modal"></input>
                 <div>
                     <div className="card">
@@ -172,12 +172,12 @@ function login() {
         password:password,
         key:key
     },function (data, status) {
-        $("#dialog").hide();
         console.log(data);
-        setCookie("ps", password, 1);
-        setCookie("key", key, 1);
 
         if(data.charAt(0)=='['){
+            $("#dialog").hide();
+            setCookie("ps", password, 1);
+            setCookie("key", key, 1);
             ReactDOM.render(
                 headArr,
                 document.getElementById("head")
