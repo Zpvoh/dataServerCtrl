@@ -13,6 +13,6 @@ create table musics
   foreign key (album_id) references music_albums (album_id),
   constraint musics_articles_id
   foreign key (relative_article_id) references articles (id)
-);
+)charset = utf8mb4;
 
 
